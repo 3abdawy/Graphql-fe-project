@@ -1,6 +1,5 @@
 import React from "react";
-import { useQuery } from "@apollo/react-hooks";
-import { gql } from "@apollo/client";
+import { useQuery,gql } from "@apollo/client";
 
 const GET_BOOKS_QUERY = gql`
   query getBooksQuery {
