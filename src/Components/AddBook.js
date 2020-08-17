@@ -15,7 +15,7 @@ const AddBook = props => {
 
   const { data, loading, error } = useQuery(GET_AUTHORS_QUERY)
 
-  const [addBook, { mutationData }] = useMutation(ADD_BOOK_MUTATION)
+  const [addBook, { data }] = useMutation(ADD_BOOK_MUTATION)
 
   const displayAuthors = () => {
     if (loading) return <option>loading authors...</option>
