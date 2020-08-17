@@ -1,5 +1,4 @@
 import React from "react";
-import { ApolloClient, ApolloProvider ,InMemoryCache, useQuery,gql} from "@apollo/client";
 
 import BookList from "./Components/BookList";
 
