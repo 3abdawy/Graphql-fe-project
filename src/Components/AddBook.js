@@ -1,21 +1,13 @@
 import React from "react";
 import { useQuery, gql } from "@apollo/client";
 
-const GET_AUTHORS_QUERY = gql`
-  query getAuthorsQuery {
-    authors {
-      name
-      id
-    }
-  }
-`;
-
+import { GET_AUTHORS_QUERY } from "../queries/queries";
 const AddBook = props => {
   const { data, loading, error } = useQuery(GET_AUTHORS_QUERY);
 
   const displayAuthors = () => {
-    if (loading) return <option>loading authors...</option>
-    else if (error) return <h2>Error loading authors...</h2>
+    if (loading) return <option>loading authors...</option>;
+    else if (error) return <h2>Error loading authors...</h2>;
     else {
       return data.authors.map(author => {
         return (
@@ -41,7 +33,7 @@ const AddBook = props => {
         <label>Author:</label>
         <select>
           <option>Select author</option>
-          { displayAuthors()}
+          {displayAuthors()}
         </select>
       </div>
       <button>+</button>
