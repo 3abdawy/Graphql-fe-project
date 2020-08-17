@@ -34,7 +34,7 @@ const AddBook = props => {
             <option>Select author</option>
           </select>
         </div>
-        <button></button>
+        <button>+</button>
       </form>
     );
 };
