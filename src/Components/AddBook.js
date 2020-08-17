@@ -2,7 +2,7 @@ import React, { useState } from "react"
 
 import { useQuery } from "@apollo/client"
 
-import { GET_AUTHORS_QUERY } from "../queries/queries"
+import { ADD_BOOK_MUTATION, GET_AUTHORS_QUERY } from "../queries/queries"
 
 const AddBook = props => {
   const [bookName, setBookName] = useState("")

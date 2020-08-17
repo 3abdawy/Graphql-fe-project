@@ -18,3 +18,11 @@ export const GET_BOOKS_QUERY = gql`
     }
   }
 `
+export const ADD_BOOK_MUTATION = gql`
+  mutation AddBook($name: String!, $genre: String!, $authorId: ID!) {
+    addBook(name: $name, genre: $genre, authorId: $authorId) {
+      name
+      id
+    }
+  }
+`
