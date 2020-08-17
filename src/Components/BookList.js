@@ -14,8 +14,12 @@ const GET_BOOKS_QUERY = gql`
 
 const BookList = props => {
   const { data, loading, error } = useQuery(GET_BOOKS_QUERY);
-  if (loading) return <h2>loading books...</h2>;
-  if (data) console.log(data.books);
+  
+  if (loading) return <h2>loading books...</h2>
+  
+  if(error) return <h2>Error...</h2>
+  
+  if (data) 
   return (
     <div>
       <ul id="books-list">
