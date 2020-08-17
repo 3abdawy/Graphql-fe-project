@@ -1,8 +1,12 @@
 import React, { useState } from "react"
 
-import { useQuery } from "@apollo/client"
+import { useQuery, useMutation } from "@apollo/client"
 
-import { GET_AUTHORS_QUERY } from "../queries/queries"
+import {
+  ADD_BOOK_MUTATION,
+  GET_AUTHORS_QUERY,
+  GET_BOOKS_QUERY
+} from "../queries/queries"
 
 const AddBook = props => {
   const [bookName, setBookName] = useState("")
@@ -10,6 +14,8 @@ const AddBook = props => {
   const [authorId, setAuthorId] = useState("")
 
   const { data, loading, error } = useQuery(GET_AUTHORS_QUERY)
+
+  const [addBook, { mutationData }] = useMutation(ADD_BOOK_MUTATION)
 
   const displayAuthors = () => {
     if (loading) return <option>loading authors...</option>
@@ -24,9 +30,18 @@ const AddBook = props => {
       })
     }
   }
+
   const submitForm = e => {
     e.preventDefault()
+    addBook({
+      variables: { name: bookName, genre: genre, authorId: authorId },
+      refetchQueries: [{ query: GET_BOOKS_QUERY }]
+    })
+    // setBookName(" ")
+    // setGenre("")
+    // setAuthorId("")
   }
+
   return (
     <form id="add-book" onSubmit={submitForm}>
       <div className="field">
