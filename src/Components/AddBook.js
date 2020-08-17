@@ -15,7 +15,7 @@ const AddBook = props => {
 
   const { data, loading, error } = useQuery(GET_AUTHORS_QUERY)
 
-  const [addBook, { data }] = useMutation(ADD_BOOK_MUTATION)
+  const [addBook] = useMutation(ADD_BOOK_MUTATION)
 
   const displayAuthors = () => {
     if (loading) return <option>loading authors...</option>
@@ -37,9 +37,6 @@ const AddBook = props => {
       variables: { name: bookName, genre: genre, authorId: authorId },
       refetchQueries: [{ query: GET_BOOKS_QUERY }]
     })
-    // setBookName(" ")
-    // setGenre("")
-    // setAuthorId("")
   }
 
   return (
