@@ -1,4 +1,4 @@
-import { gql } from "@apollo/client";
+import { gql } from "@apollo/client"
 
 export const GET_AUTHORS_QUERY = gql`
   query getAuthorsQuery {
@@ -7,7 +7,7 @@ export const GET_AUTHORS_QUERY = gql`
       id
     }
   }
-`;
+`
 
 export const GET_BOOKS_QUERY = gql`
   query getBooksQuery {
@@ -17,4 +17,4 @@ export const GET_BOOKS_QUERY = gql`
       id
     }
   }
-`;
+`
