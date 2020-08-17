@@ -2,21 +2,41 @@ import React from "react"
 
 import { useQuery } from "@apollo/client"
 
-import { GET_BOOKS_QUERY } from "../queries/queries"
-
+import { GET_BOOK_QUERY } from "../queries/queries"
 const BookDetails = props => {
-  const { data, loading, error } = useQuery(GET_BOOKS_QUERY)
+  const { data, loading,error } = useQuery(GET_BOOK_QUERY, {
+    variables: {
+      id: props.bookId
+    },
+    skip: props.bookId === null
+  })
 
-  if (loading) return <h2>loading books...</h2>
-
-  if (error) return <h2>Error...</h2>
-
-  if (data)
-    return (
-      <div id="book-details">
-        <p>Output book details here</p>
-      </div>
-    )
+  const displayBookDetails = () => {
+      if(loading) return<p>Loading ...</p>
+      if(error) return<p>Error ...</p>
+      if(data) return(
+      <div>
+            <h2>Name : {data.book.name}</h2>
+            <p>genre : {data.book.genre}</p>
+            <p>Author: {data.book.author.name}</p>
+            <p>All Books by this author</p>
+            <ul className="other-books">
+                {data.book.author.books.map(book => {
+                    return <li key={book.id}>{book.name}</li>
+                })
+                    
+                }
+            </ul>
+      </div>)
+      else
+      return<p>just click on a book</p>
+  }
+  return (
+    <div id="book-details">
+      <p>book details go here</p>
+      {displayBookDetails()}
+    </div>
+  )
 }
 
 export default BookDetails
