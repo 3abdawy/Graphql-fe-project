@@ -1,6 +1,6 @@
 import React from "react";
 
-import { useQuery,gql } from "@apollo/client";
+import { useQuery } from "@apollo/client";
 
 import {GET_BOOKS_QUERY} from '../queries/queries';
 
